@@ -45,4 +45,4 @@ class StatsCalculator {
   }
 }
 
-module.exports = StatsCalculator;
+module.exports = StatsCalculator;// Test automatique
