@@ -1,80 +1,199 @@
-# Stats Calculator
+# 📊 Stats Calculator - Application de Calculs Statistiques
 
-Un petit utilitaire Node.js pour effectuer des calculs statistiques de base (somme, moyenne, écart-type, etc.) sur une liste de nombres.
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](http://localhost:8080/job/stats-calculator/)
+[![Node.js](https://img.shields.io/badge/node-%3E%3D%2018.0.0-brightgreen.svg)](https://nodejs.org)
+[![Docker](https://img.shields.io/badge/docker-ready-blue.svg)](https://www.docker.com/)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-## Fonctionnalités
+Application Node.js permettant de calculer des statistiques de base (somme, moyenne, écart-type) sur une série de nombres, avec pipeline CI/CD complet utilisant Jenkins et Docker.
 
-- Calcul de la somme
-- Calcul de la moyenne
-- Calcul de l'écart-type
-- Calcul du nombre de valeurs
-- Interface en ligne de commande interactive
+## ✨ Fonctionnalités
 
-## Installation
+- ✅ Calcul de la **somme** d'une série de nombres
+- ✅ Calcul de la **moyenne** arithmétique
+- ✅ Calcul de l'**écart-type** (standard deviation)
+- ✅ Interface interactive en ligne de commande
+- ✅ Validation robuste des entrées utilisateur
+- ✅ Tests unitaires avec couverture à 100%
+- ✅ Pipeline CI/CD automatisé
+- ✅ Conteneurisation Docker
+
+## 🔧 Prérequis
+
+- **Node.js** >= 18.0.0
+- **npm** >= 8.0.0
+- **Git**
+- **Docker** (optionnel, pour la conteneurisation)
+- **Jenkins** (optionnel, pour le CI/CD)
+
+## 📦 Installation
+
+### 1. Cloner le repository
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/Nima-kad/stats-calculator.git
 cd stats-calculator
+```
+
+### 2. Installer les dépendances
+
+```bash
 npm install
 ```
 
-## Utilisation
-
-Lancez le programme en ligne de commande :
-
-```bash
-npm start
-```
-
-Suivez les instructions pour entrer vos valeurs.
-
-## Exemple de sortie
-
-```
-=== Calculateur de Statistiques ===
-
-Combien de valeurs souhaitez-vous entrer? 5
-Entrez la valeur 1: 1
-Entrez la valeur 2: 2
-Entrez la valeur 3: 3
-Entrez la valeur 4: 4
-Entrez la valeur 5: 5
-
---- Résultats ---
-Valeurs entrées: 1, 2, 3, 4, 5
-Somme: 15.00
-Moyenne: 3.00
-Écart-type: 1.41
-Nombre de valeurs: 5
-```
-
-## Tests
-
-Pour lancer les tests unitaires :
+### 3. Vérifier l'installation
 
 ```bash
 npm test
 ```
 
-Pour générer un rapport de couverture :
+## 🚀 Utilisation
+
+### Lancer l'application
 
 ```bash
+npm start
+```
+
+### Exemple d'utilisation
+
+```
+=== Calculateur de Statistiques ===
+
+Combien de valeurs souhaitez-vous entrer? 5
+Entrez la valeur 1: 10
+Entrez la valeur 2: 20
+Entrez la valeur 3: 30
+Entrez la valeur 4: 40
+Entrez la valeur 5: 50
+
+--- Résultats ---
+Valeurs entrées: 10, 20, 30, 40, 50
+Somme: 150.00
+Moyenne: 30.00
+Écart-type: 14.14
+Nombre de valeurs: 5
+```
+
+### Utilisation programmatique
+
+```javascript
+const StatsCalculator = require('./src/calculator');
+
+const numbers = [10, 20, 30, 40, 50];
+const stats = StatsCalculator.calculateAll(numbers);
+
+console.log(stats);
+// Output: { sum: 150, average: 30, standardDeviation: 14.14..., count: 5 }
+```
+
+## 🧪 Tests
+
+### Lancer les tests
+
+```bash
+# Tests simples
+npm test
+
+# Tests avec couverture
 npm run test:coverage
 ```
 
-## Structure du projet
+### Structure des tests
 
-- `src/` : Code source principal
-  - [`calculator.js`](src/calculator.js) : Logique des calculs statistiques
-  - [`index.js`](src/index.js) : Interface CLI
-- `tests/` : Tests unitaires ([`calculator.test.js`](tests/calculator.test.js))
-- `coverage/` : Rapport de couverture généré par Jest
+Les tests couvrent :
+- ✅ Calculs avec nombres positifs
+- ✅ Calculs avec nombres négatifs
+- ✅ Calculs avec décimales
+- ✅ Gestion des erreurs (tableau vide, valeurs invalides)
+- ✅ Cas limites (valeurs identiques, grands nombres)
 
-## Dépendances
+## 🐳 Docker
 
-- [readline-sync](https://www.npmjs.com/package/readline-sync) : Pour l'entrée utilisateur en CLI
-- [jest](https://jestjs.io/) : Pour les tests unitaires
+### Construction de l'image
 
-## Auteur
+```bash
+docker build -t stats-calculator:latest .
+```
 
-À compléter.
+### Lancer le conteneur
+
+```bash
+docker run -it stats-calculator:latest
+```
+
+## 🔄 Pipeline CI/CD
+
+### Configuration Jenkins
+
+1. **Installation des plugins requis** :
+   - NodeJS Plugin
+   - Docker Plugin
+   - Pipeline Plugin
+
+2. **Configuration du job** :
+   - Type : Pipeline
+   - SCM : Git
+   - Build Triggers : Poll SCM `H/3 * * * *`
+
+### Étapes du pipeline
+
+```groovy
+1. Checkout       → Récupération du code source
+2. Install        → Installation des dépendances
+3. Test           → Exécution des tests unitaires
+4. Coverage       → Génération du rapport de couverture
+5. Docker Build   → Construction de limage Docker
+```
+
+## 📁 Structure du projet
+
+```
+stats-calculator/
+├── src/
+│   ├── calculator.js      # Module de calculs statistiques
+│   └── index.js          # Point d'entrée de l'application
+├── tests/
+│   └── calculator.test.js # Tests unitaires Jest
+├── .dockerignore         # Fichiers ignorés par Docker
+├── .gitignore           # Fichiers ignorés par Git
+├── Dockerfile           # Configuration Docker
+├── Jenkinsfile          # Pipeline CI/CD
+├── package.json         # Configuration npm
+├── package-lock.json    # Verrou des dépendances
+└── README.md           # Documentation
+```
+
+## 🛠️ Scripts npm disponibles
+
+```json
+{
+  "start": "node src/index.js",
+  "test": "jest",
+  "test:coverage": "jest --coverage",
+  "test:watch": "jest --watch"
+}
+```
+
+## 🔐 Variables d'environnement
+
+Aucune variable d'environnement n'est requise pour l'exécution de base.
+
+Pour le CI/CD :
+- `DOCKER_USERNAME` : Naima KADRI
+- `DOCKER_PASSWORD` : **********
+
+## 👤 Auteur
+
+**Naima Kadri**
+
+- GitHub: [@Nima-kad](https://github.com/Nima-kad)
+
+## 🙏 Remerciements
+
+- Projet réalisé dans le cadre d'un TP DevOps
+- Merci au formateur Didier DEFRANCE pour leur accompagnement. 
+
+---
+
+📅 **Dernière mise à jour** : 1 août 2025
