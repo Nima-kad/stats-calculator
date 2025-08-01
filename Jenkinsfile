@@ -1,16 +1,15 @@
 pipeline {
     agent any
-    
     tools {
-        nodejs 'NodeJS' // Assurez-vous d'avoir configuré NodeJS dans Jenkins
+        nodejs 'NodeJS'
     }
-    
+
     stages {
         stage('Checkout') {
             steps {
                 echo 'Récupération du code source...'
                 git branch: 'main', 
-                    url: 'https://github.com/VOTRE_USERNAME/stats-calculator.git'
+                    url: 'https://github.com/Nima-kad/stats-calculator.git'
             }
         }
         
