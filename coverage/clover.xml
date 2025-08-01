@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1754040400697" clover="3.2.0">
+  <project timestamp="1754040400697" name="All files">
+    <metrics statements="17" coveredstatements="17" conditionals="16" coveredconditionals="16" methods="6" coveredmethods="6" elements="39" coveredelements="39" complexity="0" loc="17" ncloc="17" packages="1" files="1" classes="1"/>
+    <file name="calculator.js" path="/Users/kadrinaima/Desktop/Tp_DevOps/stats-calculator/src/calculator.js">
+      <metrics statements="17" coveredstatements="17" conditionals="16" coveredconditionals="16" methods="6" coveredmethods="6"/>
+      <line num="6" count="16" type="cond" truecount="4" falsecount="0"/>
+      <line num="7" count="2" type="stmt"/>
+      <line num="9" count="14" type="stmt"/>
+      <line num="10" count="67" type="cond" truecount="4" falsecount="0"/>
+      <line num="11" count="1" type="stmt"/>
+      <line num="13" count="66" type="stmt"/>
+      <line num="19" count="7" type="cond" truecount="4" falsecount="0"/>
+      <line num="20" count="1" type="stmt"/>
+      <line num="22" count="6" type="stmt"/>
+      <line num="27" count="4" type="cond" truecount="4" falsecount="0"/>
+      <line num="28" count="1" type="stmt"/>
+      <line num="31" count="3" type="stmt"/>
+      <line num="32" count="17" type="stmt"/>
+      <line num="33" count="3" type="stmt"/>
+      <line num="34" count="3" type="stmt"/>
+      <line num="39" count="1" type="stmt"/>
+      <line num="48" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>
