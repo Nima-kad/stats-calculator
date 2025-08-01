@@ -3,7 +3,6 @@
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](http://localhost:8080/job/stats-calculator/)
 [![Node.js](https://img.shields.io/badge/node-%3E%3D%2018.0.0-brightgreen.svg)](https://nodejs.org)
 [![Docker](https://img.shields.io/badge/docker-ready-blue.svg)](https://www.docker.com/)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 Application Node.js permettant de calculer des statistiques de base (somme, moyenne, écart-type) sur une série de nombres, avec pipeline CI/CD complet utilisant Jenkins et Docker.
 
